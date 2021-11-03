@@ -1,2 +1,3 @@
 # Book-Inventory-GUI
-Stores book info provided by user in SQLite DB
+Allows user to store information about books in SQLite database.
+The app uses Tkinter (a GUI library) and sqlite3 (a library that interacts with sqlite database)
