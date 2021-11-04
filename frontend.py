@@ -18,9 +18,17 @@ import backend
 #in backend we have list of tuples
 #view function inserts each tuple as new row inside Listbox
 def view_command():
+    list.delete(0,END)
     #backend.view is list of tuples in backend - is list obj
     for row in backend.view():
         #insert into listbox - new rows put at end of listbox
+        list.insert(END,row)
+
+def search_command():
+    list.delete(0,END)
+    #get param from entry widgets
+    #change param to plain str obj
+    for row in backend.search(title_value.get(),author_value.get(),year_value.get(),isbn_value.get()):
         list.insert(END,row)
 
 window=Tk()
@@ -37,23 +45,26 @@ b4=Label(window, text="ISBN")
 b4.grid(row=1,column=2)
 
 #entries
-e1_value=StringVar()
-e2_value=StringVar()
-e3_value=StringVar()
-e4_value=StringVar()
-e1=Entry(window, textvariable=e1_value, width=14)
+title_value=StringVar()
+e1=Entry(window, textvariable=title_value, width=14)
 e1.grid(row=0,column=1)
-e2=Entry(window, textvariable=e2_value,width=14)
+
+year_value=StringVar()
+e2=Entry(window, textvariable=year_value,width=14)
 e2.grid(row=1,column=1)
-e3=Entry(window, textvariable=e3_value,width=14)
+
+author_value=StringVar()
+e3=Entry(window, textvariable=author_value,width=14)
 e3.grid(row=0,column=3)
-e4=Entry(window, textvariable=e4_value,width=14)
+
+isbn_value=StringVar()
+e4=Entry(window, textvariable=isbn_value,width=14)
 e4.grid(row=1,column=3)
 
 #buttons
 b1=Button(window, text="View all", width=14, command=view_command)
 b1.grid(row=2,column=3)
-b2=Button(window, text= "Search entry",width=14)
+b2=Button(window, text= "Search entry",width=14, command=search_command)
 b2.grid(row=3,column=3)
 b3=Button(window, text="Add entry",width=14)
 b3.grid(row=4,column=3)
