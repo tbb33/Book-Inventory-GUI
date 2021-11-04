@@ -31,6 +31,12 @@ def search_command():
     for row in backend.search(title_value.get(),author_value.get(),year_value.get(),isbn_value.get()):
         list.insert(END,row)
 
+def add_command():
+    backend.add(title_value.get(),author_value.get(),year_value.get(),isbn_value.get())
+    list.delete(0,END)
+    #show new entry (as tuple) in listbox
+    list.insert(END, (title_value.get(),author_value.get(),year_value.get(),isbn_value.get()))
+
 window=Tk()
 window.title("Bookstore Inventory")
 
@@ -66,7 +72,7 @@ b1=Button(window, text="View all", width=14, command=view_command)
 b1.grid(row=2,column=3)
 b2=Button(window, text= "Search entry",width=14, command=search_command)
 b2.grid(row=3,column=3)
-b3=Button(window, text="Add entry",width=14)
+b3=Button(window, text="Add entry",width=14, command=add_command)
 b3.grid(row=4,column=3)
 b4=Button(window, text="Update",width=14)
 b4.grid(row=5,column=3)
