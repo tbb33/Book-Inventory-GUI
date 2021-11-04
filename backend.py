@@ -28,7 +28,21 @@ def view():
     conn.close()
     return rows
 
-#testing functions
+#returns all records from db that match specified criteria
+#pass empty strings in case user doesn't fill out all 4 values
+def search(title="", author="", year="", isbn=""):
+    conn = sqlite3.connect("book.db")
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM book WHERE title=? OR author=? or year=? or isbn=?",(title, author, year, isbn))
+    rows=cur.fetchall()
+    conn.close()
+    return rows
+
+
 connect() #will be executed anytime this script is ran (ie when run frontend)
-add("Planets", "Peter Vanguard", 1888, 67858998)
+#TESTING FUNCTIONS
+# add("Planets", "Peter Vanguard", 1888, 67858998)
+# print(view())
+add("Earth", "John Smith", 1799, 99654895)
 print(view())
+print(search(author="John Smith"))
