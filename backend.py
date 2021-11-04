@@ -47,6 +47,15 @@ def delete(id):
     conn.commit()
     conn.close()
 
+#in frontend: user will eventually select entry from listbox then update
+#updates book entry to new 4 values based on ID
+def update(id, title, author, year, isbn):
+    conn = sqlite3.connect("book.db")
+    cur = conn.cursor()
+    cur.execute("UPDATE book set title=?, author=?, year=?, isbn=? WHERE id=?",(title, author, year, isbn, id))
+    conn.commit()
+    conn.close()
+
 
 connect() #will be executed anytime this script is ran (ie when run frontend)
 #TESTING FUNCTIONS
@@ -55,5 +64,7 @@ connect() #will be executed anytime this script is ran (ie when run frontend)
 # add("Earth", "John Smith", 1799, 99654895)
 # print(view())
 # print(search(author="John Smith"))
-delete(2)
+# delete(2)
+# print(view())
+update(1,"Space","Mary Matthews", 1919, 46215478)
 print(view())
