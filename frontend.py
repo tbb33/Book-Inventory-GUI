@@ -13,6 +13,15 @@ close
 
 import tkinter
 from tkinter import *
+import backend
+
+#in backend we have list of tuples
+#view function inserts each tuple as new row inside Listbox
+def view_command():
+    #backend.view is list of tuples in backend - is list obj
+    for row in backend.view():
+        #insert into listbox - new rows put at end of listbox
+        list.insert(END,row)
 
 window=Tk()
 window.title("Bookstore Inventory")
@@ -42,7 +51,7 @@ e4=Entry(window, textvariable=e4_value,width=14)
 e4.grid(row=1,column=3)
 
 #buttons
-b1=Button(window, text="View all", width=14)
+b1=Button(window, text="View all", width=14, command=view_command)
 b1.grid(row=2,column=3)
 b2=Button(window, text= "Search entry",width=14)
 b2.grid(row=3,column=3)
@@ -56,7 +65,7 @@ b6=Button(window, text="Close",width=14)
 b6.grid(row=7,column=3)
 
 #listbox
-list=Listbox(window)
+list=Listbox(window,height=6,width=35)
 list.grid(row=2,column=0, rowspan=6, columnspan=2)
 
 #scrollbar for listbox
