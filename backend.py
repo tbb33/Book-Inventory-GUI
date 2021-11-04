@@ -38,11 +38,22 @@ def search(title="", author="", year="", isbn=""):
     conn.close()
     return rows
 
+#deletes book entry from db based on ID
+#ID will be first item in tuple when we call this from frontend
+def delete(id):
+    conn = sqlite3.connect("book.db")
+    cur = conn.cursor()
+    cur.execute("DELETE FROM book WHERE id=?",(id,))
+    conn.commit()
+    conn.close()
+
 
 connect() #will be executed anytime this script is ran (ie when run frontend)
 #TESTING FUNCTIONS
 # add("Planets", "Peter Vanguard", 1888, 67858998)
 # print(view())
-add("Earth", "John Smith", 1799, 99654895)
+# add("Earth", "John Smith", 1799, 99654895)
+# print(view())
+# print(search(author="John Smith"))
+delete(2)
 print(view())
-print(search(author="John Smith"))
