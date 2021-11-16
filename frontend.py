@@ -17,23 +17,27 @@ import backend
 
 def get_selected_row(event):
     global selected_tuple
-    #grabs 1st item from tuple-index from listbox as single nbr
-    index = list.curselection()[0]
-    #print(index) #test: prints to terminal
-    selected_tuple = list.get(index) #gets tuple from listbox with specified index
-    #print(selected_tuple[0]) #test
-    #return(selected_tuple) #test - not needed when global var
+    #fixing empty listbox bug with try and except
+    try:
+        #grabs 1st item from tuple-index from listbox as single nbr
+        index = list.curselection()[0]
+        #print(index) #test: prints to terminal
+        selected_tuple = list.get(index) #gets tuple from listbox with specified index
+        #print(selected_tuple[0]) #test
+        #return(selected_tuple) #test - not needed when global var
 
-    #when user selects entry from listbox,
-    #insert those 4 values into entry widgets
-    e1.delete(0,END)
-    e1.insert(END,selected_tuple[1]) #insert title to title entry widget
-    e3.delete(0,END)
-    e3.insert(END,selected_tuple[2]) #author
-    e2.delete(0,END)
-    e2.insert(END,selected_tuple[3]) #year
-    e4.delete(0,END)
-    e4.insert(END,selected_tuple[4]) #isbn
+        #when user selects entry from listbox,
+        #insert those 4 values into entry widgets
+        e1.delete(0,END)
+        e1.insert(END,selected_tuple[1]) #insert title to title entry widget
+        e3.delete(0,END)
+        e3.insert(END,selected_tuple[2]) #author
+        e2.delete(0,END)
+        e2.insert(END,selected_tuple[3]) #year
+        e4.delete(0,END)
+        e4.insert(END,selected_tuple[4]) #isbn
+    except IndexError:
+        pass
 
 
 #in backend we have list of tuples
