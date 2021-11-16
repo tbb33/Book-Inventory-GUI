@@ -66,7 +66,7 @@ def update_command():
     #selected_tuple[0] is the ID - remains the same
     backend.update(selected_tuple[0], title_value.get(),author_value.get(),year_value.get(),isbn_value.get())
     #troubleshoot: below is incorrect since passing selected tuple and not current values in entry widgets
-    #print(selected_tuple[0], selected_tuple[1], selected_tuple[2], selected_tuple[3], selected_tuple[4]) 
+    #print(selected_tuple[0], selected_tuple[1], selected_tuple[2], selected_tuple[3], selected_tuple[4])
 
 
 window=Tk()
@@ -110,7 +110,8 @@ b4=Button(window, text="Update",width=14, command=update_command)
 b4.grid(row=5,column=3)
 b5=Button(window, text="Delete",width=14, command=delete_command)
 b5.grid(row=6,column=3)
-b6=Button(window, text="Close",width=14)
+b6=Button(window, text="Close",width=14, command=window.destroy)
+
 b6.grid(row=7,column=3)
 
 #listbox
@@ -119,7 +120,7 @@ list.grid(row=2,column=0, rowspan=6, columnspan=2)
 
 #scrollbar for listbox
 s=Scrollbar(window)
-s.grid(row=2,column=2, rowspan=6)
+s.grid(row=3,column=2, rowspan=4, sticky='ns')
 #apply config method to listbox and scrollbar obj
 list.configure(yscrollcommand=s.set)
 s.configure(command=list.yview) #when scroll the vertial view chages
