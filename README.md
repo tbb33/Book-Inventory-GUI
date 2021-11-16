@@ -15,7 +15,7 @@ Close the window
 
 
 Two files are needed for this project:
-1. frontend.py - run this file to run the entire program, connects frontend functions to backend.py
+1. frontend.py - constructs GUI, run this file to run the entire program, connects frontend functions to backend.py
 2. backend.py - creates and connects to database "book.db", creates table and changes the database through various functions
 
 Optional file - book.db is a sample file of what the database file may look like. User can use this file to begin by putting all 3 files in the same folder.
