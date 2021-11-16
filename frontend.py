@@ -61,6 +61,14 @@ def add_command():
 def delete_command():
     backend.delete(selected_tuple[0]) #passes index only
 
+def update_command():
+    #send current values in entry widgets
+    #selected_tuple[0] is the ID - remains the same
+    backend.update(selected_tuple[0], title_value.get(),author_value.get(),year_value.get(),isbn_value.get())
+    #troubleshoot: below is incorrect since passing selected tuple and not current values in entry widgets
+    #print(selected_tuple[0], selected_tuple[1], selected_tuple[2], selected_tuple[3], selected_tuple[4]) 
+
+
 window=Tk()
 window.title("Bookstore Inventory")
 
@@ -98,7 +106,7 @@ b2=Button(window, text= "Search entry",width=14, command=search_command)
 b2.grid(row=3,column=3)
 b3=Button(window, text="Add entry",width=14, command=add_command)
 b3.grid(row=4,column=3)
-b4=Button(window, text="Update",width=14)
+b4=Button(window, text="Update",width=14, command=update_command)
 b4.grid(row=5,column=3)
 b5=Button(window, text="Delete",width=14, command=delete_command)
 b5.grid(row=6,column=3)
